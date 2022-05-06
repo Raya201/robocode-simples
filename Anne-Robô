@@ -1,0 +1,37 @@
+package Trabalho;
+import robocode.*;
+import java.awt.Color;
+/**
+ * Anne - a robot by (Rayane)
+ */
+public class Anne extends Robot
+{
+	public void run() {
+		 setBodyColor(Color.magenta);
+		setGunColor(Color.black);
+		setRadarColor(Color.magenta);
+		setBulletColor(Color.magenta);
+		setScanColor(Color.magenta);
+    	
+	while(true) {
+       ahead(1000);
+	   turnRight(90);	
+	   turnGunRight(360);	
+}
+	}
+	public void onScannedRobot(ScannedRobotEvent e) {
+		fire(2);
+	}
+	public void onHitByBullet(HitByBulletEvent e) {
+    back(10);	
+	scan();
+	turnRight(180);
+	ahead(100);
+	}
+	public void onHitWall(HitWallEvent e) {
+		turnRight(180);
+        ahead(200);
+		turnRight(100);
+        ahead(200);
+	}	
+}

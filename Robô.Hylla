@@ -1,0 +1,45 @@
+package Trabalho;
+
+import robocode.HitRobotEvent;
+import robocode.Robot;
+import robocode.ScannedRobotEvent;
+import java.awt.Color.*;
+import java.awt.*;
+public class Hylla extends TeamRobot {
+	boolean gostodnd;
+	double qualquer1; 
+	public void run() {
+	  setBodyColor(Color.magenta);
+		setGunColor(Color.blue);
+		setRadarColor(Color.magenta);
+		setBulletColor(Color.magenta);
+		setScanColor(Color.magenta);
+		qualquer1 = Math.max(getBattleFieldWidth(), getBattleFieldHeight());
+		gostodnd = false;
+		turnLeft(getHeading() % 90);
+		ahead(qualquer1);
+		gostodnd = true;
+		turnGunRight(90);
+		turnRight(90);
+		while (true) {
+			gostodnd = true;
+			ahead(qualquer1);
+			gostodnd = false;
+			turnRight(90);
+		}
+	}
+	public void onHitRobot(HitRobotEvent e) {
+		if (e.getBearing() > -90 && e.getBearing() < 90) {
+			back(100);
+		} 
+		else {
+			ahead(100);
+		}
+	}
+	public void onScannedRobot(ScannedRobotEvent e) {
+		fire(3);
+		if (gostodnd) {
+			scan();
+		}
+	}
+}

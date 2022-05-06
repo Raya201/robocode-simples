@@ -1,0 +1,39 @@
+package Trabalho;
+
+import robocode.*;
+import java.awt.Color;
+
+/**
+ * Ttaixp - a robot by (Thais)
+ */
+public class Ttaixp extends AdvancedRobot
+{   
+    boolean movendoFrente;
+	
+	public void run() {
+	    setBodyColor(Color.magenta);
+		setGunColor(Color.cyan);
+		setRadarColor(Color.magenta);
+		setBulletColor(Color.magenta);
+		setScanColor(Color.magenta);
+		while(true) {
+       setAhead(40000);
+	   movendoFrente=true;
+	   setTurnRight(90);
+		setTurnLeft(180);
+	   turnGunRight(360);
+		setMaxVelocity(8);
+		}
+	}
+	public void onScannedRobot(ScannedRobotEvent e) {
+		fire(1);
+	}
+	public void onHitByBullet(HitByBulletEvent e) {
+	back(10);
+	}
+	
+    public void onHitWall(HitWallEvent e){
+	back(20);
+	}
+	
+	}
